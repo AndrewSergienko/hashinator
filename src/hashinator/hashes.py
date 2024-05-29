@@ -1,11 +1,10 @@
 import math
 
-import imagehash
 import numpy
 from PIL import Image, ImageFilter
 from scipy.fftpack import dct
 
-import utils
+from hashinator import utils
 
 __all__ = [
     'ahash',
@@ -322,16 +321,3 @@ def blockhash(im, bits=16):
 
     _translate_blocks_to_bits(result, block_width * block_height)
     return "".join(map(str, result))
-    # return bits_to_hexhash(result)
-
-
-if __name__ == "__main__":
-    print(utils.compare_hashes(crop_resistant_hash(Image.open("images/img1.jpg")), crop_resistant_hash(Image.open("images/img3.jpg"))))
-    # print(imagehash.crop_resistant_hash(Image.open("images/img1.jpg")) - imagehash.crop_resistant_hash(Image.open(
-    #     "images/img3.jpg")))
-    # print(imagehash.crop_resistant_hash(Image.open("images/img1.jpg")) - imagehash.crop_resistant_hash(Image.open(
-    #     "images/img4.jpg")))
-    # print(imagehash.crop_resistant_hash(Image.open("images/img1.jpg")) - imagehash.crop_resistant_hash(Image.open(
-    #     "images/img5.jpg")))
-    # print(imagehash.crop_resistant_hash(Image.open("images/img1.jpg")) - imagehash.crop_resistant_hash(Image.open(
-    #     "images/img6.jpg")))
